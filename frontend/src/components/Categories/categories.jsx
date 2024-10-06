@@ -1,4 +1,5 @@
 import React from "react";
+import { FaArrowAltCircleRight } from "react-icons/fa";
 
 function Categories() {
   return (
@@ -6,7 +7,10 @@ function Categories() {
       <div className="container">
         <div className="d-grid">
           <h1 className="display-1">All Products</h1>
-          <small>--Categories</small>
+          <small>
+            {" "}
+            <FaArrowAltCircleRight /> Categories
+          </small>
         </div>
       </div>
     </div>
