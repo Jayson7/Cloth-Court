@@ -47,7 +47,8 @@ class ClothesProduct(models.Model):
     stock = models.IntegerField(default=0)
     previous_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     discount = models.CharField(max_length=20, default='33%')
-    rating = models.
+    rating = models.PositiveIntegerField(default=0)
+    views = models.PositiveIntegerField(default=0)
     main_image = models.ImageField(upload_to='products/', null=True, blank=True)
     other_images = models.ManyToManyField('ProductImage', blank=True)  # Multiple images
 
