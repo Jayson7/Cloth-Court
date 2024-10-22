@@ -1,5 +1,7 @@
 from django.db import models
 
+from vendors.models import Vendor
+
 # Available sizes list
 size_choices = [
     ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'),
@@ -51,7 +53,7 @@ class ClothesProduct(models.Model):
     views = models.PositiveIntegerField(default=0)
     main_image = models.ImageField(upload_to='products/', null=True, blank=True)
     other_images = models.ManyToManyField('ProductImage', blank=True)  # Multiple images
-
+    vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE, blank=False, null=True)
     # Multiple sizes field
     sizes_available = models.ManyToManyField('ProductSize', blank=True)  # Multiple sizes
     
@@ -80,7 +82,6 @@ class ProductImage(models.Model):
         return f"Image for product"
 
 
-class Vendor(models.Model):
-    pass
+    
 
 
