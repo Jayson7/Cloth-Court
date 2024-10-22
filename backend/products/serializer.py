@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ClothesProduct
+from .models import *
 
 class ClothesProductSerializer(serializers.ModelSerializer):
     category_display = serializers.SerializerMethodField()
@@ -14,3 +14,5 @@ class ClothesProductSerializer(serializers.ModelSerializer):
 
     def get_gender_display(self, obj):
         return obj.get_gender_display()
+
+
