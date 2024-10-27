@@ -6,13 +6,13 @@ size_choices = [
     # ... rest of the size choices
 ]
 
-class Categories(models.TextChoices):
-    CASUAL = 'CASUAL', 'Casual'
-    DRESSES = 'DRESSES', 'Dresses'
-    UNDERWEAR = 'UNDERWEAR', 'Underwear'
-    TOP_TEES = 'TOP_TEES', 'Top and Tees'
+Categories = [
+   ( 'CASUAL'), ('Casual'),
+    ('DRESSES'), ('Dresses'),
+   ('UNDERWEAR'),( 'Underwear'),
+   ( 'TOP_TEES'), ('Top and Tees'),
     # ... other categories
-
+]
 class Gender(models.TextChoices):
     MALE = 'MALE', 'Male'
     FEMALE = 'FEMALE', 'Female'
@@ -59,6 +59,7 @@ class Category(models.Model):
 # Model for Product Images
 class ProductImage(models.Model):
     image = models.ImageField(upload_to='products/other_images/')
+    product = models.ForeignKey(ClothesProduct, on_delete=models.CASCADE, related_name='image_product', blank=False, null=False)
 
     def __str__(self):
         return f"Image for product"

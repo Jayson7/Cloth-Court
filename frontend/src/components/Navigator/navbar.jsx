@@ -1,19 +1,27 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-
+import "./nav.css";
 // pages
 import Homepage from "../Home/homepage.jsx";
 import Categories from "../Categories/categories";
 import NotFound from "../Page4040/NotFound.jsx";
+import logo from "../../images/logo_dark.png";
 
 const Navbar = () => {
   return (
     <div>
       <Router>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg  navbar-light bg-light">
+          <div className="container-fluid ">
             <Link className="navbar-brand" to="/">
-              Navbar
+              <img
+                src={logo}
+                width="30"
+                className="rounded mx-2"
+                height="30"
+                alt=""
+              ></img>
+              Cloth Court
             </Link>
             <button
               className="navbar-toggler"
@@ -30,9 +38,9 @@ const Navbar = () => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav mx-auto mb-4 mb-lg-2 mx-4">
                 <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="/">
+                  <Link className="nav-link " aria-current="page" to="/">
                     Home
                   </Link>
                 </li>
@@ -86,6 +94,14 @@ const Navbar = () => {
                   </Link>
                 </li>
               </ul>
+              <div className="action-group d-flex flex-wrap align-content-center justify-content-center">
+                <button className="btn btn-primary py-1 px-5 text-light mx-1 my-1">
+                  Login
+                </button>
+                <button className="btn btn-success py-1 px-5 text-light mx-1 my-1">
+                  Sign up
+                </button>
+              </div>
             </div>
           </div>
         </nav>
