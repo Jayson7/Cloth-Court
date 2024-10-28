@@ -1,3 +1,4 @@
 arrange all neccesary backend codes and models 
 display in frontend 
-authentication
+authentication (login / log out / token)
+http://127.0.0.1:8000/accounts/profile/

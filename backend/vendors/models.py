@@ -5,8 +5,11 @@ class Vendor(models.Model):
     rating = models.PositiveIntegerField(default=0, blank=True)
     address = models.CharField(max_length=100)
     total_sales = models.IntegerField(default=0, blank=True)
-    products = models.ManyToManyField('products.ClothesProduct', blank=True, related_name='product_in_stock')  # Use string reference here
+    products = models.ManyToManyField('products.ClothesProduct', blank=True, related_name='product_in_stock')
     verified = models.BooleanField(default=False)
     
     def __str__(self):
         return str(self.name_of_organization)
+
+    class Meta:
+        verbose_name_plural = "Vendors"
