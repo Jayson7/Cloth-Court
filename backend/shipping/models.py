@@ -47,3 +47,7 @@ class OrderConfirmation(models.Model):
 
     def __str__(self):
         return f"Order {self.order_id} - Confirmed: {self.is_confirmed}"
+
+
+class Delivered(models.Model):
+    pass 
