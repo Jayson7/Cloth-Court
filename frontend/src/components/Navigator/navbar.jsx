@@ -5,6 +5,11 @@ import "./nav.css";
 import Homepage from "../Home/homepage.jsx";
 import Categories from "../Categories/categories";
 import NotFound from "../Page4040/NotFound.jsx";
+import Login from "../Login/login.jsx";
+import Register from "../Register/register.jsx";
+import Products from "../../components/Products/product.jsx";
+
+// particles
 import logo from "../../images/logo_dark.png";
 
 const Navbar = () => {
@@ -16,12 +21,14 @@ const Navbar = () => {
             <Link className="navbar-brand" to="/">
               <img
                 src={logo}
-                width="30"
-                className="rounded mx-2"
-                height="30"
+                width="40"
+                className="rounded mx-2 mb-2"
+                height="50"
                 alt=""
               ></img>
-              Cloth Court
+              <span className="logo-text">
+                CloTh<span>Court</span>
+              </span>
             </Link>
             <button
               className="navbar-toggler"
@@ -38,17 +45,19 @@ const Navbar = () => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav mx-auto mb-4 mb-lg-2 mx-4">
+              <ul className="navbar-nav mx-auto mb-4 mb-lg-2 mx-4 ">
                 <li className="nav-item">
                   <Link className="nav-link " aria-current="page" to="/">
                     Home
                   </Link>
                 </li>
+                {/*  */}
                 <li className="nav-item">
                   <Link className="nav-link" to="/categories">
                     All Products
                   </Link>
                 </li>
+                {/*  */}
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle"
@@ -95,12 +104,7 @@ const Navbar = () => {
                 </li>
               </ul>
               <div className="action-group d-flex flex-wrap align-content-center justify-content-center">
-                <button className="btn btn-primary py-1 px-5 text-light mx-1 my-1">
-                  Login
-                </button>
-                <button className="btn btn-success py-1 px-5 text-light mx-1 my-1">
-                  Sign up
-                </button>
+                <div></div>
               </div>
             </div>
           </div>
@@ -109,6 +113,12 @@ const Navbar = () => {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/cart" element={<Categories />} />
+          <Route path="/profile" element={<Categories />} />
+          <Route path="/profile" element={<Categories />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
