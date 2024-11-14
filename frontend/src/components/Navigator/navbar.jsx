@@ -8,9 +8,13 @@ import NotFound from "../Page4040/NotFound.jsx";
 import Login from "../Login/login.jsx";
 import Register from "../Register/register.jsx";
 import Products from "../../components/Products/product.jsx";
-
+import Cart from "../Cart/cart.js";
+import UserProfile from "../Profile/profile.jsx";
+import Deposit from "../deposit/deposit.jsx";
 // particles
 import logo from "../../images/logo_dark.png";
+import { FaCartPlus } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   return (
@@ -104,8 +108,15 @@ const Navbar = () => {
                 </li>
               </ul>
               <div className="action-group d-flex flex-wrap align-content-center justify-content-center">
-                <div></div>
+                <div>
+                  <FaCartPlus />
+                </div>
+                <div className="balance">₦0.00</div>
+                <div className="profile">
+                  <FaUser />
+                </div>
               </div>
+              ₦
             </div>
           </div>
         </nav>
@@ -116,9 +127,9 @@ const Navbar = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/cart" element={<Categories />} />
-          <Route path="/profile" element={<Categories />} />
-          <Route path="/profile" element={<Categories />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/deposit" element={<Deposit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
