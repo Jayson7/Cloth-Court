@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <div>
       <Router>
-        <nav className="navbar navbar-expand-lg  navbar-dark bg-light">
+        <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-light">
           <div className="container-fluid ">
             <Link className="navbar-brand" to="/">
               <img
