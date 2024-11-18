@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <div>
       <Router>
-        <nav className="navbar navbar-expand-lg  navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg  navbar-dark bg-light">
           <div className="container-fluid ">
             <Link className="navbar-brand" to="/">
               <img
@@ -64,29 +64,37 @@ const Navbar = () => {
                 {/*  */}
                 <li>
                   <Link className="nav-link" to="/products">
-                    All Products
+                    Categories
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link
-                    className="nav-link disabled"
-                    to="#"
-                    aria-disabled="true"
-                  >
-                    Disabled
+                <li>
+                  <Link className="nav-link" to="/products">
+                    Best Sellers
+                  </Link>
+                </li>
+
+                <li>
+                  <Link className="nav-link" to="/products">
+                    Track Order
+                  </Link>
+                </li>
+
+                <li>
+                  <Link className="nav-link" to="/products">
+                    Chat with us
                   </Link>
                 </li>
               </ul>
-              <div className="action-group d-flex flex-wrap align-content-center justify-content-center">
-                <div>
+              <div className="nav-logos action-group d-flex flex-wrap align-content-center justify-content-around">
+                <div className="cart">
                   <FaCartPlus />
+                  <span>0</span>
                 </div>
-                <div className="balance">₦0.00</div>
+                <div className="balance">₦ 0.00</div>
                 <div className="profile">
                   <FaUser />
                 </div>
               </div>
-              ₦
             </div>
           </div>
         </nav>

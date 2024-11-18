@@ -1,6 +1,7 @@
 .navbar {
   background-color: #091057 !important;
 }
+
 ul li a {
   color: rgb(255, 255, 255) !important;
   font-weight: 00;
@@ -14,4 +15,11 @@ ul li a {
 
 .logo-text span {
   color: rgb(235, 193, 9);
+}
+
+.nav-logos {
+  color: white !important;
+  width: 140px;
+  align-items: center;
+  font-size: 1.2rem;
 }
