@@ -87,10 +87,12 @@ const Navbar = () => {
               </ul>
               <div className="nav-logos action-group d-flex flex-wrap align-content-center justify-content-around">
                 <div className="cart">
-                  <FaCartPlus />
                   <span>0</span>
+                  <FaCartPlus />
                 </div>
+
                 <div className="balance">₦ 0.00</div>
+
                 <div className="profile">
                   <FaUser />
                 </div>

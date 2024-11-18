@@ -3,3 +3,23 @@
   background-color: #090f57e2;
   min-height: 100vh;
 }
+
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart span {
+  font-size: 16px;
+  background-color: red;
+  height: 16px;
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-box2 img {
+  height: 800px;
+  width: 800px;
+}

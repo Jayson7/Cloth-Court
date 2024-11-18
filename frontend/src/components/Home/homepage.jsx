@@ -6,7 +6,7 @@ function homepage() {
     <div className="homeWrapper">
       <div className="container d-flex justify-content-around align-items-center flex-wrap">
         <div className="row">
-          <div className="tittle-box1">
+          <div className="tittle-box1 col-md-6 col-sm-12">
             <div className="title-text">Raining Offers For Hot Summer!</div>
             <div className="tittle-text-mini">25% Off On All Products</div>
             <div className="tittle-button">
@@ -18,8 +18,10 @@ function homepage() {
           </div>
         </div>
 
-        <div className="tittle-box2">
-          <img src="{hero}" alt="" />
+        <div className="tittle-box2 col-md-6 col-sm-12">
+          <div className="title-box-mini">
+            <img src={hero} alt="" />
+          </div>
         </div>
       </div>
     </div>
