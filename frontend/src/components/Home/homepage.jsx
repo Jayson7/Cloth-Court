@@ -1,6 +1,6 @@
 import React from "react";
 import "./home.css";
-import hero from "../../images/hero-bg.png";
+
 // extensions
 
 import LatestProduct from "./latest product/latest";
@@ -25,9 +25,7 @@ function homepage() {
             </div>
           </div>
 
-          <div className="title-box2 ">
-            <img src={hero} alt="" />
-          </div>
+          <div className="title-box2 "></div>
         </div>
       </div>
       <LatestProduct />

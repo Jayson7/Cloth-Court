@@ -19,7 +19,31 @@ ul li a {
 
 .nav-logos {
   color: white !important;
-  width: 140px;
+  width: 160px;
   align-items: center;
   font-size: 1.2rem;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart span {
+  font-size: 14px;
+  color: red;
+  background-color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  height: 19px;
+  width: 19px;
+  display: flex;
+  align-items: center;
+  margin-right: -2px;
+  margin-top: -10px;
+  justify-content: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
