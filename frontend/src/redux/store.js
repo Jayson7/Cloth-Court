@@ -1,20 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import thunk from "redux-thunk"; // Import redux-thunk
+import productReducer from "./slices/productSlice";
+import vendorReducer from "./slices/vendorSlice";
+import userReducer from "./slices/userSlice";
+import cartReducer from "./slices/cartSlice";
 
-// Example of custom logger middleware
-const loggerMiddleware = (storeAPI) => (next) => (action) => {
-  console.log("Dispatching:", action);
-  const result = next(action);
-  console.log("Next state:", storeAPI.getState());
-  return result;
-};
-
-export const store = configureStore({
+// Configure Redux Store
+const store = configureStore({
   reducer: {
-    // Add other slices here
+    products: productReducer, // Manages product-related state
+    vendors: vendorReducer, // Manages vendor-related state
+    user: userReducer, // Manages user authentication and profile state
+    cart: cartReducer, // Manages cart-related state
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(thunk, loggerMiddleware),
 });
 
 export default store;
