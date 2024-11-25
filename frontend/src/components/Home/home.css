@@ -1,6 +1,9 @@
 .homeWrapper {
   width: 100%;
   background-color: #090f57e2;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .hero-container {
@@ -12,7 +15,7 @@
   width: 100%;
 }
 .title-box1 {
-  width: 35%;
+  width: 30%;
   height: 100%;
   align-items: center;
   justify-content: center;
@@ -25,7 +28,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  background-image: url("../../images/processed_hero\ copy.jpg.png");
+  background-image: url("../../images/h.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
