@@ -10,7 +10,7 @@ class ClothesProductSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'categories', 'category_display', 'gender', 
             'gender_display', 'description', 'price', 'stock', 'previous_price', 
-            'discount', 'rating', 'views', 'main_image', 'sizes_available'
+            'discount', 'rating', 'views', 'main_image', 'sizes_available', 'date_created'
         ]
 
     def get_category_display(self, obj):

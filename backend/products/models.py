@@ -43,7 +43,7 @@ class ClothesProduct(models.Model):
     other_images = models.ManyToManyField('ProductImage', blank=True)
     vendor = models.ForeignKey('vendors.Vendor', on_delete=models.CASCADE, blank=False, null=True)
     sizes_available = models.ManyToManyField('ProductSize', blank=True)
-
+    date_created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     def __str__(self):
         return f"{self.title} - {self.get_gender_display()}"
 

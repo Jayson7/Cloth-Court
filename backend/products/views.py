@@ -33,3 +33,15 @@ class ProductImageCreateView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# fetch latest products 
+
+class FetchLatestProducts(APIView):
+    def get(self, request):
+        # Fetch the latest products ordered by date_created
+        latest_products = ClothesProduct.objects.all().order_by('-date_created')
+        
+        # Serialize the data
+        serializer = ClothesProductSerializer(latest_products, many=True)
+        return Response(serializer.data)
