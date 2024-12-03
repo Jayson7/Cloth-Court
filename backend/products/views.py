@@ -39,8 +39,8 @@ class ProductImageCreateView(APIView):
 
 class FetchLatestProducts(APIView):
     def get(self, request):
-        # Fetch the latest products ordered by date_created
-        latest_products = ClothesProduct.objects.all().order_by('-date_created')
+        # Fetch the last 20 products
+        latest_products = ClothesProduct.objects.all().order_by('-date_created')[:20]
         
         # Serialize the data
         serializer = ClothesProductSerializer(latest_products, many=True)
