@@ -10,13 +10,13 @@ function homepage() {
     <div>
       <div className="homeWrapper">
         <div className="hero-container ">
-          <div className="tittle-box1">
+          <div className="tittle-box1 px-3">
             <h1 className="title-text">
               Raining Offers For <br /> Hot Summer!
             </h1>
             <h4 className="title-text-mini">25% Off On All Products</h4>
             <div className="title-button mt-5">
-              <button className="btn btn-transparent text-white py-2 px-4 ">
+              <button className="btn btn-primary text-white py-2 px-4 ">
                 Shop Now
               </button>
               <button className="btn btn-success py-2 px-4 mx-4">

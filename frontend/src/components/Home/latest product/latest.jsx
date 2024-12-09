@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../axiosConfig"; // Import your Axios instance
 import { useNavigate } from "react-router-dom";
-
+import "./latest.css";
 function LatestProduct() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
@@ -9,9 +9,11 @@ function LatestProduct() {
   // Fetch the latest products
   useEffect(() => {
     axios
-      .get("/api/latest-products/")
+      .get("latest-products/") // Use relative path since baseURL is already set
       .then((response) => {
-        setProducts(response.data); // Assuming the API returns an array of products
+        setProducts(response.data);
+        // Assuming the API returns an array of products
+        console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -24,24 +26,26 @@ function LatestProduct() {
   };
 
   return (
-    <div className="product-container">
-      <h1>Latest Products</h1>
-      <div className="product-grid">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="product-card"
-            onClick={() => handleProductClick(product.id)}
-          >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="product-image"
-            />
-            <h3 className="product-name">{product.name}</h3>
-            <p className="product-price">${product.price}</p>
-          </div>
-        ))}
+    <div className="container">
+      <div className="product-container">
+        <h1>Latest Products</h1>
+        <div className="product-grid">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="product-card"
+              onClick={() => handleProductClick(product.id)}
+            >
+              <img
+                src={product.main_image}
+                alt={product.main_name}
+                className="product-image"
+              />
+              <h3 className="product-name">{product.name}</h3>
+              <p className="product-price">${product.price}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
