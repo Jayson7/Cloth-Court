@@ -8,7 +8,9 @@ from .serializer import ClothesProductSerializer, CategorySerializer, ProductSiz
 class ClothesProductListView(APIView):
     def get(self, request):
         products = ClothesProduct.objects.all()
-        serializer = ClothesProductSerializer(products, many=True)
+        serializer = ClothesProductSerializer(
+            products, many=True, context={'request': request}  # Pass the request context
+        )
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 # View for fetching all categories
@@ -34,14 +36,14 @@ class ProductImageCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-# fetch latest products 
-
+# Fetch latest products
 class FetchLatestProducts(APIView):
     def get(self, request):
         # Fetch the last 20 products
         latest_products = ClothesProduct.objects.all().order_by('-date_created')[:20]
         
         # Serialize the data
-        serializer = ClothesProductSerializer(latest_products, many=True)
-        return Response(serializer.data)
+        serializer = ClothesProductSerializer(
+            latest_products, many=True, context={'request': request}  # Pass the request context
+        )
+        return Response(serializer.data, status=status.HTTP_200_OK)

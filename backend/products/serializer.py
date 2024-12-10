@@ -4,6 +4,7 @@ from .models import ClothesProduct, Category, ProductSize, ProductImage
 class ClothesProductSerializer(serializers.ModelSerializer):
     category_display = serializers.SerializerMethodField()
     gender_display = serializers.SerializerMethodField()
+    main_image = serializers.SerializerMethodField()  # Add a method for absolute URL for images
 
     class Meta:
         model = ClothesProduct
@@ -18,6 +19,13 @@ class ClothesProductSerializer(serializers.ModelSerializer):
 
     def get_gender_display(self, obj):
         return obj.get_gender_display()
+
+    def get_main_image(self, obj):
+        # Build an absolute URL for the main image
+        request = self.context.get('request')
+        if request and obj.main_image:
+            return request.build_absolute_uri(obj.main_image.url)
+        return None
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
