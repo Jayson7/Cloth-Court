@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import ClothesProduct, Category, ProductSize, ProductImage
 from .serializer import ClothesProductSerializer, CategorySerializer, ProductSizeSerializer, ProductImageSerializer
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 # View for listing all products
 class ClothesProductListView(APIView):
@@ -47,3 +49,20 @@ class FetchLatestProducts(APIView):
             latest_products, many=True, context={'request': request}  # Pass the request context
         )
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+def ViewProduct(request, product_id):
+    
+    if request.method == "GET":
+        # Retrieve the product or return a 404 if not found
+        product = get_object_or_404(ClothesProduct, id=product_id)
+        
+        # Serialize the product data
+        serializer = ClothesProductSerializer(product, context={'request': request})
+        
+        # Return the serialized data as a JSON response
+        return JsonResponse(serializer.data, safe=False, status=200)
+    
+    # Handle non-GET methods
+    return JsonResponse({"error": "Method not allowed"}, status=405)
