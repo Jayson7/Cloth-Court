@@ -43,6 +43,8 @@ function LatestProduct() {
               />
               <h3 className="product-name">{product.name}</h3>
               <p className="product-price">${product.price}</p>
+              <div className="btn btn-info mx-2 my-2">View product</div>
+              <div className="btn btn-success mx-2 my-2">Add To Cart</div>
             </div>
           ))}
         </div>
