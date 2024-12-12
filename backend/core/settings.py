@@ -148,7 +148,7 @@ REST_FRAMEWORK = {
 
 # cors headers config 
 
-# CORS_ALLOWED_ORIGINS = ['https://localhost:3000', "http://localhost:19000",]
+CORS_ALLOWED_ORIGINS = ['https://localhost:3000', "http://localhost:19000",]
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOW_METHODS = (
