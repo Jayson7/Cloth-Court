@@ -1,34 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
-function ProductDetail() {
-  const { id } = useParams();
+const ProductDetail = () => {
+  const { id } = useParams(); // Access the 'id' parameter from the URL
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`/api/product/${id}/`)
-      .then((response) => {
-        setProduct(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching product details:", error);
-      });
+    // Fetch product data based on the ID
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(`/api/products/${id}`); // Adjust the endpoint as per your backend
+        const data = await response.json();
+        setProduct(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchProduct();
   }, [id]);
 
-  if (!product) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
+  if (!product) {
+    return <div>Product not found.</div>;
+  }
+
   return (
-    <div className="product-detail">
+    <div>
       <h1>{product.name}</h1>
-      <img src={product.image} alt={product.name} />
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
+      <p>Views: {product.views}</p>
     </div>
   );
-}
+};
 
 export default ProductDetail;

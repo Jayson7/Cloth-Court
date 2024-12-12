@@ -11,6 +11,7 @@ import Products from "../../components/Products/product.jsx";
 import Cart from "../Cart/cart.js";
 import UserProfile from "../Profile/profile.jsx";
 import Deposit from "../deposit/deposit.jsx";
+import ProductDetail from "../Products/productDetails.jsx";
 // particles
 import logo from "../../images/logo_dark.png";
 import { FaCartPlus } from "react-icons/fa";
@@ -107,6 +108,7 @@ const Navbar = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/product/:id/" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/profile" element={<UserProfile />} />
           <Route path="/deposit" element={<Deposit />} />
