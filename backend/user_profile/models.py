@@ -28,7 +28,6 @@ class User(AbstractUser):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=100)
-    bio = models.CharField(max_length=1000)
     verified = models.BooleanField(default=False)
 
 # Signal to create and save Profile automatically
