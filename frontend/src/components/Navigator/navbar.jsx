@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./nav.css";
+import Dropdown from "react-bootstrap/Dropdown";
 // pages
 import Homepage from "../Home/homepage.jsx";
 import Categories from "../Categories/categories";
@@ -18,11 +19,18 @@ import { FaCartPlus } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+  // dropdown
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   return (
     <div>
       <Router>
         <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-light">
-          <div className="container-fluid ">
+          <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               <img
                 src={logo}
@@ -50,19 +58,17 @@ const Navbar = () => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav mx-auto mb-4 mb-lg-2 mx-4 ">
+              <ul className="navbar-nav mx-auto mb-4 mb-lg-2 mx-4">
                 <li className="nav-item">
-                  <Link className="nav-link " aria-current="page" to="/">
+                  <Link className="nav-link" aria-current="page" to="/">
                     Home
                   </Link>
                 </li>
-                {/*  */}
                 <li className="nav-item">
                   <Link className="nav-link" to="/products">
                     All Products
                   </Link>
                 </li>
-                {/*  */}
                 <li>
                   <Link className="nav-link" to="/products">
                     Categories
@@ -73,13 +79,11 @@ const Navbar = () => {
                     Best Sellers
                   </Link>
                 </li>
-
                 <li>
                   <Link className="nav-link" to="/products">
                     Track Order
                   </Link>
                 </li>
-
                 <li>
                   <Link className="nav-link" to="/products">
                     Chat with us
@@ -91,12 +95,31 @@ const Navbar = () => {
                   <span>0</span>
                   <FaCartPlus />
                 </div>
+                <div className="balance mt-2">₦ 0.00</div>
 
-                <div className="balance">₦ 0.00</div>
+                <Dropdown>
+                  <Dropdown.Toggle id="dropdown-basic">
+                    <FaUser />
+                  </Dropdown.Toggle>
 
-                <div className="profile">
-                  <FaUser />
-                </div>
+                  <Dropdown.Menu>
+                    {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item> */}
+                    <Dropdown.Item>
+                      <Link
+                        to={"login"}
+                        className="text-decoration-none w-100 h-100"
+                      >
+                        {" "}
+                        Login
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <Link to={"register"} className="text-decoration-none">
+                        Sign Up
+                      </Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </div>
             </div>
           </div>

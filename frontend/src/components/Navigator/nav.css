@@ -19,7 +19,7 @@ ul li a {
 
 .nav-logos {
   color: white !important;
-  width: 160px;
+  width: 260px;
   align-items: center;
   font-size: 1.2rem;
 }
@@ -46,4 +46,25 @@ ul li a {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
+}
+
+.dropdown .btn {
+  background-color: transparent !important;
+  border: none;
+}
+
+.dropdown .btn:active,
+.dropdown .btn:focus,
+.dropdown .btn:hover {
+  border: none;
+  box-shadow: none;
+}
+
+.btn-check:active + .btn-primary:focus,
+.btn-check:checked + .btn-primary:focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  border: none;
+  box-shadow: none;
 }
