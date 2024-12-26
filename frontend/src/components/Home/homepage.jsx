@@ -1,36 +1,32 @@
 import React from "react";
 import "./home.css";
-
-// extensions
-
 import LatestProduct from "./latest product/latest";
 
-function homepage() {
+function Homepage() {
   return (
-    <div>
-      <div className="homeWrapper">
-        <div className="hero-container ">
-          <div className="tittle-box1 px-3">
-            <h1 className="title-text">
-              Raining Offers For <br /> Hot Summer!
-            </h1>
-            <h4 className="title-text-mini">25% Off On All Products</h4>
-            <div className="title-button mt-5">
-              <button className="btn btn-primary text-white py-2 px-4 ">
-                Shop Now
-              </button>
-              <button className="btn btn-success py-2 px-4 mx-4">
-                Find More
-              </button>
-            </div>
+    <div className="homeWrapper">
+      <div className="hero-container">
+        <div className="title-box1">
+          <h1 className="title-text">
+            Raining Offers for <br /> Hot Summer!
+          </h1>
+          <h4 className="title-text-mini">25% Off on All Products</h4>
+          <div className="title-button">
+            <button className="btn btn-primary shop-btn py-3 px-5">
+              Shop Now
+            </button>
+            <button className="btn btn-outline-success find-more-btn py-3 px-5">
+              Find More
+            </button>
           </div>
-
-          <div className="title-box2 "></div>
         </div>
+        <div className="title-box2"></div>
       </div>
-      <LatestProduct />
+      <div className="products-section">
+        <LatestProduct />
+      </div>
     </div>
   );
 }
 
-export default homepage;
+export default Homepage;
