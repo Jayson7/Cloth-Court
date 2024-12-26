@@ -107,14 +107,17 @@ const Navbar = () => {
                     <Dropdown.Item>
                       <Link
                         to={"login"}
-                        className="text-decoration-none w-100 h-100"
+                        className="text-decoration-none text-dark text-center"
                       >
                         {" "}
                         Login
                       </Link>
                     </Dropdown.Item>
                     <Dropdown.Item>
-                      <Link to={"register"} className="text-decoration-none">
+                      <Link
+                        to={"register"}
+                        className="text-decoration-none text-dark text-center"
+                      >
                         Sign Up
                       </Link>
                     </Dropdown.Item>

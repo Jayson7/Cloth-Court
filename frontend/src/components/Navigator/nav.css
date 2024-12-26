@@ -68,3 +68,9 @@ ul li a {
   border: none;
   box-shadow: none;
 }
+
+.dropdown-menu .show a a {
+  width: 100% !important;
+  height: 100% !important;
+  text-decoration: none !important;
+}
