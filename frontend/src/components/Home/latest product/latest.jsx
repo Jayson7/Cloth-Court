@@ -22,7 +22,7 @@ function LatestProduct() {
 
   // Navigate to product detail page
   const handleProductClick = (productId) => {
-    navigate(`/api/product/${productId}`);
+    navigate(`/product/${productId}`);
   };
 
   return (
@@ -31,7 +31,10 @@ function LatestProduct() {
         <h1 className="mb-5">Latest Products</h1>
         <div className="product-grid d-flex align-items-center justify-content-around flex-wrap mt-5">
           {products.map((product) => (
-            <div key={product.id} className="product-card col-md-3 col-sm-3 ">
+            <div
+              key={product.id}
+              className="product-card col-md-3 mx-1 my-4 col-sm-3 "
+            >
               <img
                 src={product.main_image}
                 alt={product.name}
