@@ -26,7 +26,7 @@ function LatestProduct() {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="product-container">
         <h1 className="mb-5">Latest Products</h1>
         <div className="product-grid d-flex align-items-center justify-content-around flex-wrap mt-5">
