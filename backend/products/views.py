@@ -64,10 +64,8 @@ class FetchLatestProducts(APIView):
 def ViewProduct(request, pk):
     if request.method == "GET":
         product = get_object_or_404(ClothesProduct, id=pk)
-        product.views =+1 # Increment views only for the viewed product
+        product.views += 1  # Correctly increment the views
         product.save()
         serializer = ClothesProductSerializer(product, context={'request': request})
         return JsonResponse(serializer.data, safe=False, status=200)
     return JsonResponse({"error": "Method not allowed"}, status=405)
-
-
