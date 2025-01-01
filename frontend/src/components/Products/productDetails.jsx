@@ -1,7 +1,7 @@
 import axios from "../axiosConfig";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./ProductDetail.css"; // External stylesheet for cleaner code
+import "./productDetails.css"; // External stylesheet for cleaner code
 
 const ProductDetail = () => {
   const { id } = useParams(); // Access the 'id' parameter from the URL
@@ -31,18 +31,20 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="product-detail-container">
-      <div className="product-image">
-        <img src={product.image} alt={product.title} />
-      </div>
-      <div className="product-info">
-        <h1 className="product-title">{product.title}</h1>
-        <p className="product-description">{product.description}</p>
-        <p className="product-price">
-          Price: <span>${product.price}</span>
-        </p>
-        <p className="product-views">Views: {product.views}</p>
-        <button className="btn-add-to-cart">Add to Cart</button>
+    <div className="mt-5">
+      <div className="product-detail-container">
+        <div className="product-image">
+          <img src={product.main_image} alt={product.title} />
+        </div>
+        <div className="product-info">
+          <h1 className="product-title">{product.title}</h1>
+          <p className="product-description">{product.description}</p>
+          <p className="product-price">
+            Price: <span>${product.price}</span>
+          </p>
+          <p className="product-views">Views: {product.views}</p>
+          <button className="btn-add-to-cart">Add to Cart</button>
+        </div>
       </div>
     </div>
   );

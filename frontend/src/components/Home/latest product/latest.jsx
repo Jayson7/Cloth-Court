@@ -33,7 +33,7 @@ function LatestProduct() {
           {products.map((product) => (
             <div
               key={product.id}
-              className="product-card col-md-3 mx-1 my-4 col-sm-3 "
+              className="product-card col-md-3 mx-1 my-4 col-sm-3 px-4"
             >
               <img
                 src={product.main_image}
