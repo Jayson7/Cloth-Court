@@ -5,7 +5,7 @@ from products.models import ClothesProduct
 class ClothesProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClothesProduct
-        fields = ['id', 'name', 'price', 'description']  # Adjust fields according to your ClothesProduct model
+        fields = ['id', 'title', 'price', 'description']  # Adjust fields according to your ClothesProduct model
 
 class VendorSerializer(serializers.ModelSerializer):
     products = ClothesProductSerializer(many=True, read_only=True)
