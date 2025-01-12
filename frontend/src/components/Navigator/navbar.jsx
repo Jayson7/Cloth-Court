@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import "./nav.css";
 import Dropdown from "react-bootstrap/Dropdown";
-// pages
+import "./nav.css";
 import Homepage from "../Home/homepage.jsx";
 import Categories from "../Categories/categories";
 import NotFound from "../Page4040/NotFound.jsx";
@@ -13,18 +12,25 @@ import Cart from "../Cart/cart.js";
 import UserProfile from "../Profile/profile.jsx";
 import Deposit from "../deposit/deposit.jsx";
 import ProductDetail from "../Products/productDetails.jsx";
-// particles
 import logo from "../../images/logo_dark.png";
 import { FaCartPlus } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
+import TokenService from "../../tokenService.js";
 
 const Navbar = () => {
-  // dropdown
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // const toggleDropdown = () => {
-  //   setIsOpen((prev) => !prev);
-  // };
+  // Check token validity on component mount
+  useEffect(() => {
+    const tokenValid = TokenService.getAccessTokenValidity();
+    setIsAuthenticated(tokenValid);
+  }, []);
+
+  // Handle Logout
+  const handleLogout = () => {
+    TokenService.clearToken();
+    setIsAuthenticated(false);
+  };
 
   return (
     <div>
@@ -38,7 +44,7 @@ const Navbar = () => {
                 className="rounded mx-2 mb-2"
                 height="50"
                 alt=""
-              ></img>
+              />
               <span className="logo-text">
                 CloTh<span>Court</span>
               </span>
@@ -70,7 +76,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link className="nav-link" to="/products">
+                  <Link className="nav-link" to="/categories">
                     Categories
                   </Link>
                 </li>
@@ -103,23 +109,43 @@ const Navbar = () => {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item> */}
-                    <Dropdown.Item className="text-center py-2 px-4">
-                      <Link
-                        to={"login"}
-                        className="text-decoration-none text-dark text-center"
-                      >
-                        Login
-                      </Link>
-                    </Dropdown.Item>
-                    <Dropdown.Item className="text-center py-2 px-4">
-                      <Link
-                        to={"register"}
-                        className="text-decoration-none text-dark text-center"
-                      >
-                        Sign Up
-                      </Link>
-                    </Dropdown.Item>
+                    {isAuthenticated ? (
+                      <>
+                        <Dropdown.Item className="text-center py-2 px-4">
+                          <Link
+                            to="/profile"
+                            className="text-decoration-none text-dark text-center"
+                          >
+                            Profile
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item
+                          className="text-center py-2 px-4"
+                          onClick={handleLogout}
+                        >
+                          Logout
+                        </Dropdown.Item>
+                      </>
+                    ) : (
+                      <>
+                        <Dropdown.Item className="text-center py-2 px-4">
+                          <Link
+                            to="/login"
+                            className="text-decoration-none text-dark text-center"
+                          >
+                            Login
+                          </Link>
+                        </Dropdown.Item>
+                        <Dropdown.Item className="text-center py-2 px-4">
+                          <Link
+                            to="/register"
+                            className="text-decoration-none text-dark text-center"
+                          >
+                            Sign Up
+                          </Link>
+                        </Dropdown.Item>
+                      </>
+                    )}
                   </Dropdown.Menu>
                 </Dropdown>
               </div>

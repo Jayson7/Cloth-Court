@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom"; // For navigation
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { login } from ".././../reducers/userSlice"; // Import Redux action
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  // handle submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -13,23 +20,45 @@ const Login = () => {
         username,
         password,
       });
-      localStorage.setItem("access_token", response.data.access);
-      localStorage.setItem("refresh_token", response.data.refresh);
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${response.data.access}`;
-      setError("");
-      // Redirect to a protected page or other post-login action
+
+      const { access, refresh } = response.data;
+
+      // Store tokens in Redux
+      dispatch(
+        login({
+          user: { username }, // Assuming `username` is the user object
+          accessToken: access,
+          refreshToken: refresh,
+        })
+      );
+
+      // Store tokens in localStorage for persistence
+      localStorage.setItem("access_token", access);
+      localStorage.setItem("refresh_token", refresh);
+      axios.defaults.headers.common["Authorization"] = `Bearer ${access}`;
+
+      // Show success toast
+      toast.success("Login successful!", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+
+      // Wait for the toast message to disappear before redirecting
+      setTimeout(() => {
+        navigate("/"); // Navigate to home page
+      }, 2000);
     } catch (err) {
-      setError("Invalid credentials");
+      toast.error("Invalid credentials", { position: "top-right" });
     }
   };
 
+  // end submit
   return (
     <div
       className="d-flex justify-content-center align-items-center vh-100"
       style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f5f5f5" }}
     >
+      <ToastContainer />
       <div
         className="shadow-lg p-5 bg-white rounded"
         style={{
@@ -63,14 +92,6 @@ const Login = () => {
               required
             />
           </div>
-          {error && (
-            <p
-              className="text-danger text-center"
-              style={{ fontSize: "0.9rem" }}
-            >
-              {error}
-            </p>
-          )}
           <button
             type="submit"
             className="btn btn-primary w-100"
