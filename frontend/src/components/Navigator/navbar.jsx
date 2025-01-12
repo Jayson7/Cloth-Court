@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import "./nav.css";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -20,11 +20,11 @@ import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
   // dropdown
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
+  // const toggleDropdown = () => {
+  //   setIsOpen((prev) => !prev);
+  // };
 
   return (
     <div>
@@ -104,16 +104,15 @@ const Navbar = () => {
 
                   <Dropdown.Menu>
                     {/* <Dropdown.Item href="#/action-1">Action</Dropdown.Item> */}
-                    <Dropdown.Item>
+                    <Dropdown.Item className="text-center py-2 px-4">
                       <Link
                         to={"login"}
                         className="text-decoration-none text-dark text-center"
                       >
-                        {" "}
                         Login
                       </Link>
                     </Dropdown.Item>
-                    <Dropdown.Item>
+                    <Dropdown.Item className="text-center py-2 px-4">
                       <Link
                         to={"register"}
                         className="text-decoration-none text-dark text-center"
