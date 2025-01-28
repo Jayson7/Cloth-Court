@@ -3,16 +3,16 @@ import { jwtDecode } from "jwt-decode";
 const TokenService = (function tokenService() {
   const setToken = (tokenObj) => {
     if (tokenObj.access) {
-      localStorage.setItem("accessToken", tokenObj.access);
+      localStorage.setItem("access_token", tokenObj.access);
     }
     if (tokenObj.refresh) {
-      localStorage.setItem("refreshToken", tokenObj.refresh);
+      localStorage.setItem("refresh_token", tokenObj.refresh);
     }
   };
 
-  const getAccessToken = () => localStorage.getItem("accessToken");
+  const getAccessToken = () => localStorage.getItem("access_token");
 
-  const getRefreshToken = () => localStorage.getItem("refreshToken");
+  const getRefreshToken = () => localStorage.getItem("refresh_token");
 
   const getTokenValidity = (token) => {
     try {
@@ -36,8 +36,8 @@ const TokenService = (function tokenService() {
   };
 
   const clearToken = () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
   };
 
   return {

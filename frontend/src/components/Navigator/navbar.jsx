@@ -16,20 +16,24 @@ import logo from "../../images/logo_dark.png";
 import { FaCartPlus } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import TokenService from "../../tokenService.js";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const navigate = useNavigate();
   // Check token validity on component mount
   useEffect(() => {
     const tokenValid = TokenService.getAccessTokenValidity();
     setIsAuthenticated(tokenValid);
+    console.log(tokenValid);
   }, []);
 
   // Handle Logout
+
   const handleLogout = () => {
-    TokenService.clearToken();
-    setIsAuthenticated(false);
+    TokenService.clearToken(); // Clear storage
+    setIsAuthenticated(false); // Update authentication state
+    navigate("/login"); // Redirect to login page
   };
 
   return (
