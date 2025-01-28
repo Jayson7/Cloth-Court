@@ -11,3 +11,4 @@ urlpatterns = [
     path('api/users/edit/', EditUserView.as_view(), name='edit_user'),  # For self-edit
     path('api/users/edit/<int:user_id>/', EditUserView.as_view(), name='edit_user_admin'),  # For admin editing
 ]
+
