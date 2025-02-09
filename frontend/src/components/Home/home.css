@@ -20,7 +20,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 80px 5%;
-    background: linear-gradient(135deg, #121319, #000000);
+    background: linear-gradient(135deg, #000000, #141212);
     min-height: 100vh;
     color: #fff;
 }
