@@ -31,41 +31,78 @@ function Products() {
     return acc;
   }, {});
 
-  if (loading) return <div className="text-center mt-5">Loading...</div>;
-  if (error) return <div className="text-center mt-5 text-danger">Error: {error}</div>;
+  if (loading)
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="alert alert-danger text-center mt-5" role="alert">
+        Error: {error}
+      </div>
+    );
 
   return (
-    <div className="container mt-5 px-5 py-5 mx-2">
-      <div className="display-5 mb-5 text-center">All Products</div>
+    <div className="container mt-5">
+      <br />
+      <br />
+      <div className="text-center mb-5 mt-5">
+        <h1 className="display-4 fw-bold mt-5">All Products</h1>
+        <p className="lead text-muted">Explore our wide range of products</p>
+      </div>
 
       {Object.entries(productsByCategory).map(([category, products]) => (
         <div key={category} className="mb-5">
-          <h2 className="mb-4">{category}</h2>
-          <div className="row">
+          <h2 className="mb-4 fw-bold text-uppercase border-bottom pb-2 text-center">
+            {category}
+          </h2>
+          <div className="row g-4 justify-content-center">
             {products.map((product) => (
-              <div key={product.id} className="col-md-4 mb-4">
-                <div className="card h-100 shadow-sm">
-                  <img
-                    src={product.main_image}
-                    alt={product.title}
-                    className="card-img-top"
-                    style={{ height: "200px", objectFit: "cover" }}
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">{product.title}</h5>
-                    <p className="card-text">{product.description}</p>
-                    <p className="card-text">
-                      <strong>Price:</strong> ${product.price}{" "}
+              <div key={product.id} className="col-md-4 d-flex justify-content-center">
+                <div className="card h-100 shadow-sm border-0" style={{ width: "100%", maxWidth: "300px" }}>
+                  <div className="position-relative">
+                    <img
+                      src={product.main_image}
+                      alt={product.title}
+                      className="card-img-top"
+                      style={{ height: "250px", objectFit: "cover" }}
+                    />
+                    {product.discount && (
+                      <span className="badge bg-danger position-absolute top-0 start-0 m-2">
+                        {product.discount}% OFF
+                      </span>
+                    )}
+                  </div>
+                  <div className="card-body p-4 text-center">
+                    <h5 className="card-title fw-bold">{product.title}</h5>
+                    <p className="card-text text-muted">{product.description}</p>
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                      <p className="card-text fw-bold text-primary mb-0">
+                        ${product.price}
+                      </p>
                       {product.previous_price && (
                         <del className="text-muted">${product.previous_price}</del>
                       )}
-                    </p>
-                    <p className="card-text">
-                      <strong>Gender:</strong> {product.gender_display}
-                    </p>
-                    <p className="card-text">
-                      <strong>Sizes:</strong> {product.sizes_available.join(", ")}
-                    </p>
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <p className="card-text mb-0">
+                        <small className="text-muted">
+                          <strong>Gender:</strong> {product.gender_display}
+                        </small>
+                      </p>
+                      <p className="card-text mb-0">
+                        <small className="text-muted">
+                          <strong>Sizes:</strong> {product.sizes_available.join(", ")}
+                        </small>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="card-footer bg-transparent border-0 p-4">
+                    <button className="btn btn-dark w-100">Add to Cart</button>
                   </div>
                 </div>
               </div>

@@ -1,27 +1,30 @@
 import React from "react";
 import "./home.css";
 import LatestProduct from "./latest product/latest";
-
+import hero from '../../images/logoh.jpg'
 function Homepage() {
   return (
     <div className="homeWrapper">
+      {/* Hero Section */}
       <div className="hero-container">
-        <div className="title-box1">
-          <h1 className="title-text">
+        <div className="hero-content">
+          <h1 className="hero-title">
             Raining Offers for <br /> Hot Summer!
           </h1>
-          <h4 className="title-text-mini">25% Off on All Products</h4>
-          <div className="title-button">
-            <button className="btn btn-primary shop-btn py-3 px-5">
-              Shop Now
-            </button>
-            <button className="btn btn-outline-success find-more-btn py-3 px-5">
-              Find More
-            </button>
+          <p className="hero-subtitle">
+            25% Off on All Products
+          </p>
+          <div className="hero-buttons">
+            <button className="btn-primary">Shop Now</button>
+            <button className="btn-outline">Find More</button>
           </div>
         </div>
-        <div className="title-box2"></div>
+        <div className="hero-image">
+          <img src={hero} alt="Summer Offers" />
+        </div>
       </div>
+
+      {/* Products Section */}
       <div className="products-section">
         <LatestProduct />
       </div>

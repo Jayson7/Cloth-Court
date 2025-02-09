@@ -26,49 +26,53 @@ function LatestProduct() {
   };
 
   return (
-    <div className="container-fluid">
-      <div className="product-container">
-        <h1 className="mb-5">Latest Products</h1>
-        <div className="product-grid d-flex align-items-center justify-content-around flex-wrap mt-5">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="product-card col-md-3 mx-1 my-4 col-sm-3 px-4"
-            >
+    <div className="latest-product-container">
+      <h1 className="latest-product-heading">Latest Products</h1>
+      <div className="product-grid">
+        {products.map((product) => (
+          <div
+            key={product.id}
+            className="product-card"
+            onClick={() => handleProductClick(product.id)}
+          >
+            <div className="product-image-container">
               <img
                 src={product.main_image}
                 alt={product.name}
-                className="product-image py-1"
+                className="product-image"
               />
+              {product.discount && (
+                <span className="discount-badge">{product.discount}% OFF</span>
+              )}
+            </div>
+            <div className="product-details">
               <h3 className="product-name">{product.name}</h3>
-              <p className="product-price">${product.price}</p>
-
-              {/* Display product details */}
-              <p className="product-info">
-                <strong>Views:</strong> {product.views}
-              </p>
-              <p className="product-info">
-                <strong>Gender:</strong> {product.gender_display}
-              </p>
-              <p className="product-info">
-                <strong>Stock:</strong> {product.stock}
-              </p>
-              <p className="product-info">
-                <strong>Previous Price:</strong> ${product.previous_price}
-              </p>
-
-              <div
-                onClick={() => handleProductClick(product.id)}
-                className="btn btn-info mx-2 my-2 px-2 py-2"
-              >
-                View product
+              <div className="price-container">
+                <p className="product-price">${product.price}</p>
+                {product.previous_price && (
+                  <p className="product-previous-price">
+                    <del>${product.previous_price}</del>
+                  </p>
+                )}
               </div>
-              <div className="btn btn-success mx-2 my-2 px-2 py-2">
-                Add To Cart
+              <div className="product-info">
+                <p>
+                  <strong>Views:</strong> {product.views}
+                </p>
+                <p>
+                  <strong>Gender:</strong> {product.gender_display}
+                </p>
+                <p>
+                  <strong>Stock:</strong> {product.stock}
+                </p>
+              </div>
+              <div className="product-actions">
+                <button className="btn btn-view">View Product</button>
+                <button className="btn btn-add-to-cart">Add To Cart</button>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
