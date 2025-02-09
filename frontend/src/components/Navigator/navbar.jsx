@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./nav.css";
@@ -16,24 +16,20 @@ import logo from "../../images/logo_dark.png";
 import { FaCartPlus } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import TokenService from "../../tokenService.js";
-
+import { useSelector } from "react-redux";
 const Navbar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+ 
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated); // Get from Redux
   const navigate = useNavigate();
+ 
+ 
 
-  // Check token validity on component mount
-  useEffect(() => {
-    const tokenValid = TokenService.getAccessTokenValidity();
-    setIsAuthenticated(tokenValid);
-    console.log(tokenValid);
-  }, []);
 
-  // Handle Logout
-  const handleLogout = () => {
-    TokenService.clearToken(); // Clear storage
-    setIsAuthenticated(false); // Update authentication state
-    navigate("/login"); // Redirect to login page
-  };
+ // Handle Logout
+ const handleLogout = () => {
+  TokenService.clearToken();
+  navigate("/login");
+};
 
   return (
     <div>
