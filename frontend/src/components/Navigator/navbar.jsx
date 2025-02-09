@@ -17,19 +17,28 @@ import { FaCartPlus } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import TokenService from "../../tokenService.js";
 import { useSelector } from "react-redux";
+
+
+// 
+
+import { useDispatch } from "react-redux";
+import { logout } from "../../reducers/userSlice";
+
+
 const Navbar = () => {
  
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated); // Get from Redux
   const navigate = useNavigate();
+  const dispatch = useDispatch();
  
  
 
 
- // Handle Logout
- const handleLogout = () => {
-  TokenService.clearToken();
-  navigate("/login");
-};
+  const handleLogout = () => {
+    TokenService.clearToken(); // Clear localStorage
+    dispatch(logout()); // Update Redux state
+    navigate("/login"); // Redirect to login
+  };
 
   return (
     <div>
