@@ -1,0 +1,8 @@
+.card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
