@@ -27,7 +27,18 @@ function LatestProduct() {
 
   return (
     <div className="latest-product-container">
-      <h1 className="latest-product-heading">Latest Products</h1>
+      <h1 className="latest-product-heading display-5 fw-bold">
+        Latest Products
+      </h1>
+      <div className="text-center d-flex align-items-center  justify-content-center">
+        <p className="mb-5 w-50 ">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium,
+          dolorum? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Ratione at ullam dolore dolorem esse perspiciatis hic quo expedita
+          dignissimos fugiat.
+        </p>
+      </div>
+      <br />
       <div className="product-grid">
         {products.map((product) => (
           <div

@@ -3,7 +3,7 @@ import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./nav.css";
 import Homepage from "../Home/homepage.jsx";
-import Categories from "../Categories/categories";
+
 import NotFound from "../Page4040/NotFound.jsx";
 import Login from "../Login/login.jsx";
 import Register from "../Register/register.jsx";
@@ -68,16 +68,7 @@ const Navbar = () => {
                   All Products
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/categories">
-                  Categories
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/products">
-                  Best Sellers
-                </Link>
-              </li>
+
               <li className="nav-item">
                 <Link className="nav-link" to="/products">
                   Track Order
@@ -103,21 +94,32 @@ const Navbar = () => {
                   {isAuthenticated ? (
                     <>
                       <Dropdown.Item>
-                        <Link to="/profile" className="text-decoration-none text-dark">
+                        <Link
+                          to="/profile"
+                          className="text-decoration-none text-dark"
+                        >
                           Profile
                         </Link>
                       </Dropdown.Item>
-                      <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                      <Dropdown.Item onClick={handleLogout}>
+                        Logout
+                      </Dropdown.Item>
                     </>
                   ) : (
                     <>
                       <Dropdown.Item>
-                        <Link to="/login" className="text-decoration-none text-dark">
+                        <Link
+                          to="/login"
+                          className="text-decoration-none text-dark"
+                        >
                           Login
                         </Link>
                       </Dropdown.Item>
                       <Dropdown.Item>
-                        <Link to="/register" className="text-decoration-none text-dark">
+                        <Link
+                          to="/register"
+                          className="text-decoration-none text-dark"
+                        >
                           Sign Up
                         </Link>
                       </Dropdown.Item>
@@ -132,7 +134,7 @@ const Navbar = () => {
 
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/categories" element={<Categories />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Products />} />

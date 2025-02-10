@@ -31,18 +31,49 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="mt-5">
-      <div className="product-detail-container">
-        <div className="product-image">
-          <img src={product.main_image} alt={product.title} />
+    <div className="product-detail-page">
+      <br />
+      <br />
+      <br />
+      <div className="product-detail-container mt-5">
+        {/* Product Image Section */}
+        <div className="product-image-section mt-5">
+          <img
+            src={product.main_image}
+            alt={product.title}
+            className="product-image"
+          />
         </div>
-        <div className="product-info">
+
+        {/* Product Info Section */}
+        <div className="product-info-section">
           <h1 className="product-title">{product.title}</h1>
           <p className="product-description">{product.description}</p>
-          <p className="product-price">
-            Price: <span>${product.price}</span>
-          </p>
-          <p className="product-views">Views: {product.views}</p>
+
+          {/* Price and Discount */}
+          <div className="price-container">
+            <p className="product-price">${product.price}</p>
+            {product.previous_price && (
+              <p className="product-previous-price">
+                <del>${product.previous_price}</del>
+              </p>
+            )}
+          </div>
+
+          {/* Additional Product Info */}
+          <div className="product-meta">
+            <p>
+              <strong>Views:</strong> {product.views}
+            </p>
+            <p>
+              <strong>Stock:</strong> {product.stock}
+            </p>
+            <p>
+              <strong>Gender:</strong> {product.gender_display}
+            </p>
+          </div>
+
+          {/* Add to Cart Button */}
           <button className="btn-add-to-cart">Add to Cart</button>
         </div>
       </div>
