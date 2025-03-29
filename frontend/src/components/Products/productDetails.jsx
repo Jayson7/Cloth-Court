@@ -1,13 +1,17 @@
 import axios from "../axiosConfig";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./productDetails.css"; // External stylesheet for cleaner code
-
+import { addItem } from "../../reducers/cartSlice"; //
+import { useDispatch } from "react-redux";
 const ProductDetail = () => {
   const { id } = useParams(); // Access the 'id' parameter from the URL
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const dispatch = useDispatch(); // Initialize useDispatch
+  const handleAddToCart = (product) => {
+    dispatch(addItem(product)); // Dispatch the action with product details
+  };
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -74,7 +78,16 @@ const ProductDetail = () => {
           </div>
 
           {/* Add to Cart Button */}
-          <button className="btn-add-to-cart">Add to Cart</button>
+          <button
+            className="btn-add-to-cart mr-2 mx-3 py-3 px-5"
+            onClick={() => handleAddToCart(product)}
+          >
+            Add to Cart
+          </button>
+          {/* homepage */}
+          <Link className="btn btn-primary py-3 px-5 mr-2 mx-3" to={"/"}>
+            Explore
+          </Link>
         </div>
       </div>
     </div>

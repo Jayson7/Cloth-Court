@@ -3,12 +3,11 @@ import { Route, Routes, Link, useNavigate } from "react-router-dom";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./nav.css";
 import Homepage from "../Home/homepage.jsx";
-
 import NotFound from "../Page4040/NotFound.jsx";
 import Login from "../Login/login.jsx";
 import Register from "../Register/register.jsx";
 import Products from "../../components/Products/product.jsx";
-import Cart from "../Cart/cart.js";
+import Cart from "../Cart/cart.jsx";
 import UserProfile from "../Profile/profile.jsx";
 import Deposit from "../deposit/deposit.jsx";
 import ProductDetail from "../Products/productDetails.jsx";
@@ -20,6 +19,7 @@ import { logout } from "../../reducers/userSlice";
 
 const Navbar = () => {
   const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const totalQuantity = useSelector((state) => state.cart.totalQuantity); // Get cart quantity
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -27,6 +27,10 @@ const Navbar = () => {
     TokenService.clearToken();
     dispatch(logout());
     navigate("/login");
+  };
+
+  const handleCartClick = () => {
+    navigate("/cart"); // Navigate to cart page
   };
 
   return (
@@ -68,7 +72,6 @@ const Navbar = () => {
                   All Products
                 </Link>
               </li>
-
               <li className="nav-item">
                 <Link className="nav-link" to="/products">
                   Track Order
@@ -81,8 +84,12 @@ const Navbar = () => {
               </li>
             </ul>
             <div className="nav-logos">
-              <div className="cart">
-                <span>0</span>
+              <div
+                className="cart"
+                onClick={handleCartClick}
+                style={{ cursor: "pointer" }}
+              >
+                <span>{totalQuantity}</span> {/* Show total cart items */}
                 <FaCartPlus size={24} />
               </div>
               <div className="balance">₦ 0.00</div>
@@ -134,7 +141,6 @@ const Navbar = () => {
 
       <Routes>
         <Route path="/" element={<Homepage />} />
-
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/products" element={<Products />} />

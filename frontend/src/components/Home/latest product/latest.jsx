@@ -1,28 +1,32 @@
 import React, { useEffect, useState } from "react";
-import axios from "../../axiosConfig"; // Import your Axios instance
+import { useDispatch } from "react-redux";
+import { addItem } from "../../../reducers/cartSlice"; // Adjust the path as needed
+import axios from "../../axiosConfig";
 import { useNavigate } from "react-router-dom";
 import "./latest.css";
 
 function LatestProduct() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // Initialize useDispatch
 
-  // Fetch the latest products
   useEffect(() => {
     axios
-      .get("latest-products/") // Use relative path since baseURL is already set
+      .get("latest-products/")
       .then((response) => {
         setProducts(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
       });
   }, []);
 
-  // Navigate to product detail page
   const handleProductClick = (productId) => {
     navigate(`/product/${productId}`);
+  };
+
+  const handleAddToCart = (product) => {
+    dispatch(addItem(product)); // Dispatch the action with product details
   };
 
   return (
@@ -41,11 +45,7 @@ function LatestProduct() {
       <br />
       <div className="product-grid">
         {products.map((product) => (
-          <div
-            key={product.id}
-            className="product-card"
-            onClick={() => handleProductClick(product.id)}
-          >
+          <div key={product.id} className="product-card">
             <div className="product-image-container">
               <img
                 src={product.main_image}
@@ -78,8 +78,18 @@ function LatestProduct() {
                 </p>
               </div>
               <div className="product-actions">
-                <button className="btn btn-view">View Product</button>
-                <button className="btn btn-add-to-cart">Add To Cart</button>
+                <button
+                  className="btn btn-view"
+                  onClick={() => handleProductClick(product.id)}
+                >
+                  View Product
+                </button>
+                <button
+                  className="btn btn-add-to-cart"
+                  onClick={() => handleAddToCart(product)}
+                >
+                  Add To Cart
+                </button>
               </div>
             </div>
           </div>
